@@ -27,13 +27,19 @@ class Solution {
         if (left == null && right == null)
             return true;
 
-        if (left == null || right == null)
+        if (left != null && right == null)
             return false;
-
+        
+        if(left == null && right != null)
+        {
+            return false;
+        }
         if (left.val != right.val)
             return false;
 
-        return isMirror(left.left, right.right)
-                && isMirror(left.right, right.left);
+        boolean first = isMirror(left.left, right.right);
+        boolean second = isMirror(left.right, right.left);
+        
+        return first && second;
     }
 }
